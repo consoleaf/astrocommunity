@@ -8,6 +8,10 @@ return {
       {
         "AstroNvim/astrocore",
         opts = function(_, opts)
+          -- HACK: add fallback value for mappings
+          if opts.mappings == nil then opts.mappings = {
+            n = {},
+          } end
           local maps = opts.mappings
           local prefix = "<Leader>g"
           maps.n[prefix .. "n"] = { desc = require("astroui").get_icon("Neogit", 1, true) .. "Neogit" }
